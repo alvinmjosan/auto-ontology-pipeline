@@ -80,13 +80,16 @@ cp .env.example .env
 # 1. Start Postgres (for Olist data)
 docker-compose up -d
 
-# 2. Load Olist CSVs (place them in ./olist_csvs first)
+# 2. Enable pgvector extension in the olist database (required for Auto Ontology)
+docker exec -it genaiprotos-postgres-1 psql -U postgres -d olist -c "CREATE EXTENSION IF NOT EXISTS vector;"
+
+# 3. Load Olist CSVs (place them in ./olist_csvs first)
 python load_data.py
 
-# 3. Run Auto Ontology against the database (see § Auto Ontology Steps)
+# 4. Run Auto Ontology against the database (see § Auto Ontology Steps)
 #    This produces outputs/ontology_olist.yaml
 
-# 4. Run the full pipeline
+# 5. Run the full pipeline
 python main.py \
   --db "postgresql://postgres:postgres@localhost:5432/olist" \
   --raw-export outputs/ontology_olist.yaml

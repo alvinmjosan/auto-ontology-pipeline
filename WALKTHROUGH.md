@@ -30,6 +30,12 @@ The Olist database has 9 tables and no foreign-key constraints. A reviewer looki
 
 **`docker-compose.yml`** runs PostgreSQL 15 (with pgvector) on port 5432 for the Olist data. This is separate from the Auto Ontology stack (which has its own `docker-compose.yml`).
 
+Once the container is started, activate the `vector` extension in the target database:
+```bash
+docker exec -it genaiprotos-postgres-1 psql -U postgres -d olist -c "CREATE EXTENSION IF NOT EXISTS vector;"
+```
+*(This ensures `pgvector` is initialized in the `olist` database so Auto Ontology's ingestion and semantic layer can run without missing-type errors).*
+
 **`load_data.py`** iterates over every `.csv` file in a given folder, strips and lower-cases the column names, and loads each file into a table named after the file using pandas `to_sql`. It never creates primary or foreign keys — the pipeline's own modules infer those from data.
 
 ```python
