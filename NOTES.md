@@ -66,6 +66,7 @@ pipeline's own additions.
 | **Geolocation redundancy** | Three lookup links were found: customer zip → geolocation zip, customer city → geolocation city, seller zip → geolocation zip. The city link is partially redundant with the zip link; both are valid but a human reviewer might drop the city one. |
 | **Validation is partly circular** | The validator re-runs the same SQL containment query used during relationship discovery. This confirms consistency but cannot detect a case where both steps are wrong for the same underlying reason. |
 | **Portuguese category names** | The LLM described `product_category_name` values as-is. A translation step would improve this. |
+| **One fallback relationship sentence** | The Customer → Location zip link sentence used the template fallback (“A Customer can be matched to a Location through shared customer_zip_code_prefix values.”) because the LLM’s answer failed the article-correctness check and the self-correction pass also failed. The sentence names a column directly rather than using business language. This is the safety net working as designed; a human review step would replace it. |
 
 ---
 

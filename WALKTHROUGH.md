@@ -230,3 +230,15 @@ second opinion.
 A: Every function takes generic inputs. There is no `if table == "olist_orders"` anywhere.
 The main limitation (documented in NOTES.md) is that per-row surrogate keys look 1-to-1
 statistically, so a human review of cardinalities is recommended for production use.
+
+
+**Q: How was the git history made?**
+A: The commits were assembled at the end from finished files using `make_git_history.ps1`
+(included in the repo). They show the logical build order — infra, then schema layer, then
+LLM and normalizer, then outputs and docs — rather than a live development timeline.
+
+**Q: Why does one relationship sentence name a column?**
+A: The Customer → Location zip link reads "A Customer can be matched to a Location through
+shared customer_zip_code_prefix values." The LLM's answer failed the article-correctness
+check and the self-correction pass also failed, so the template fallback was used. This is
+the safety net in `llm_client.py` working as designed; the sentence is noted in NOTES.md.
