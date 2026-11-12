@@ -1,0 +1,892 @@
+data_layer:
+  databases:
+  - id: 22294107-5f36-4099-8c45-014929fe4f6e
+    dialect: postgres
+    schemas:
+    - id: 66280418-77c0-4aee-946c-642988dd4561
+      name: public
+      database_name: olist
+      tables:
+      - id: 8b3627b5-5089-49fa-862e-83757e412c8e
+        name: olist_customers_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: baec3ad5-a8cf-4e11-9b20-a15d8228cde9
+          name: customer_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: fd4da068-1eba-40cc-aec9-f00e05d4ca4d
+          name: customer_unique_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: false
+        - id: 0ce5bfa6-c024-4d41-9bec-972d617c504f
+          name: customer_zip_code_prefix
+          description: ''
+          type: bigint
+          sample_values:
+          - 22440
+          - 38408
+          - 37500
+          - 35160
+          - 24220
+          is_nullable: true
+          is_unique: false
+        - id: a319efd6-fb1e-434e-94ae-d6a429441748
+          name: customer_city
+          description: ''
+          type: text
+          sample_values:
+          - sao paulo
+          - rio de janeiro
+          - belo horizonte
+          - brasilia
+          - porto alegre
+          is_nullable: true
+          is_unique: false
+        - id: 8a1e9afc-96c4-4c4a-9347-2c7b56c4bf5a
+          name: customer_state
+          description: ''
+          type: text
+          sample_values:
+          - SP
+          - RJ
+          - MG
+          - RS
+          - PR
+          is_nullable: true
+          is_unique: false
+      - id: 99ffeac2-5ab3-4524-8288-90661d62364d
+        name: olist_geolocation_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 1359aa7d-7ac1-4f13-8d14-8b83a88d707c
+          name: geolocation_zip_code_prefix
+          description: ''
+          type: bigint
+          sample_values:
+          - 1046
+          - 1050
+          - 1020
+          - 1014
+          - 1033
+          is_nullable: true
+          is_unique: false
+        - id: eb5e85e5-7e23-464a-ba1f-34b0bc1cf0f1
+          name: geolocation_lat
+          description: ''
+          type: double precision
+          sample_values:
+          - -23.546081127035535
+          - -23.54985418067981
+          - -23.54693540437998
+          - -23.542520789115148
+          - -23.546690486964888
+          is_nullable: true
+          is_unique: false
+        - id: 8958d1cd-00b5-460a-a419-f18daa5714cf
+          name: geolocation_lng
+          description: ''
+          type: double precision
+          sample_values:
+          - -46.64482029837157
+          - -46.643139396906825
+          - -46.63658792659698
+          - -46.63533516134283
+          - -46.635446958807194
+          is_nullable: true
+          is_unique: false
+        - id: b69b8213-5832-4ad3-b167-b542743a839b
+          name: geolocation_city
+          description: ''
+          type: text
+          sample_values:
+          - sao paulo
+          - "s\xE3o paulo"
+          is_nullable: true
+          is_unique: false
+        - id: ae9fc1b5-f4ea-4635-bb93-a1fd229c57bf
+          name: geolocation_state
+          description: ''
+          type: text
+          sample_values:
+          - SP
+          is_nullable: true
+          is_unique: false
+      - id: 6e68a5e0-9000-4337-a98e-35bdfa316adc
+        name: olist_order_items_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 0de078f4-c8a4-4853-98c5-94a87a2cbe41
+          name: order_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: false
+        - id: 4ac6cae8-f756-4155-9da2-49210094c093
+          name: order_item_id
+          description: ''
+          type: bigint
+          sample_values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          is_nullable: true
+          is_unique: false
+        - id: 8635694b-31cf-4253-b2ce-002eaeceabd4
+          name: product_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: false
+        - id: 59dea2ed-843e-4ef9-ab55-3af6f4cc5559
+          name: seller_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: false
+        - id: 48ed77c1-ee0c-4e41-ab8e-1889b0ded7ba
+          name: shipping_limit_date
+          description: ''
+          type: text
+          sample_values:
+          - '2017-08-24 19:24:32'
+          - '2018-08-14 22:15:22'
+          - '2017-07-26 21:05:07'
+          - '2017-05-26 19:25:17'
+          - '2017-11-30 03:12:39'
+          is_nullable: true
+          is_unique: false
+        - id: fbbcdd20-bf51-4b44-884d-284f8065ae0b
+          name: price
+          description: ''
+          type: double precision
+          sample_values:
+          - 59.9
+          - 99.9
+          - 49.9
+          - 49.0
+          - 29.99
+          is_nullable: true
+          is_unique: false
+        - id: 4d677318-940d-4049-aa2d-b725dd4555e0
+          name: freight_value
+          description: ''
+          type: double precision
+          sample_values:
+          - 15.1
+          - 11.85
+          - 14.1
+          - 7.78
+          - 7.39
+          is_nullable: true
+          is_unique: false
+      - id: ec2a9824-118e-4ecb-b147-78d31432e4e0
+        name: olist_order_payments_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 01444b48-5dd9-44e2-945f-8774ea9528ed
+          name: order_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: 2967a91d-550d-4e5f-8e95-12eed0fccc36
+          name: payment_sequential
+          description: ''
+          type: bigint
+          sample_values:
+          - 1
+          - 2
+          - 5
+          - 3
+          - 4
+          is_nullable: true
+          is_unique: false
+        - id: f887cbf6-2b1e-40ac-93a4-9442d575ba3a
+          name: payment_type
+          description: ''
+          type: text
+          sample_values:
+          - credit_card
+          - boleto
+          - voucher
+          - debit_card
+          - not_defined
+          is_nullable: true
+          is_unique: false
+        - id: 4716f0ff-0a95-4ddb-8ce6-b88c63ce5c44
+          name: payment_installments
+          description: ''
+          type: bigint
+          sample_values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 10
+          is_nullable: true
+          is_unique: false
+        - id: 2f0b5264-63c5-40ce-93b2-7ddad574db8e
+          name: payment_value
+          description: ''
+          type: double precision
+          sample_values:
+          - 50.0
+          - 73.34
+          - 30.0
+          - 65.71
+          - 20.0
+          is_nullable: true
+          is_unique: false
+      - id: baa5e17f-aee6-4203-8174-bde60cb2dee3
+        name: olist_order_reviews_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 5c4269ec-a211-4fb2-9a2c-a3105d3aff94
+          name: review_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: f076df55-1d4e-486e-a719-b2781157bcd8
+          name: order_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: 200e46a5-9f50-4b88-91a7-1e335aad6155
+          name: review_score
+          description: ''
+          type: bigint
+          sample_values:
+          - 5
+          - 4
+          - 1
+          - 3
+          - 2
+          is_nullable: true
+          is_unique: false
+        - id: adc53db4-922a-4810-a33a-702b00a17441
+          name: review_comment_title
+          description: ''
+          type: text
+          sample_values:
+          - recomendo
+          - Super recomendo
+          - Bom
+          - super recomendo
+          - Recomendo
+          is_nullable: true
+          is_unique: false
+        - id: 4b58629f-bb0c-42b4-9010-99699af3cb5e
+          name: review_comment_message
+          description: ''
+          type: text
+          sample_values:
+          - 'Gostei '
+          - Muito bom
+          - entrega rapida
+          is_nullable: true
+          is_unique: false
+        - id: 43217b6c-4049-40de-b7dc-206f86b8aa97
+          name: review_creation_date
+          description: ''
+          type: text
+          sample_values:
+          - '2018-05-10 00:00:00'
+          - '2018-04-27 00:00:00'
+          - '2018-04-19 00:00:00'
+          - '2018-08-21 00:00:00'
+          - '2018-02-16 00:00:00'
+          is_nullable: true
+          is_unique: false
+        - id: 2eef2c0b-4b89-4a89-ba45-51da636dff81
+          name: review_answer_timestamp
+          description: ''
+          type: text
+          sample_values:
+          - '2018-01-18 21:46:59'
+          - '2018-03-11 03:05:13'
+          - '2018-02-18 14:36:24'
+          - '2017-04-21 22:02:06'
+          - '2018-03-02 10:26:53'
+          is_nullable: true
+          is_unique: true
+      - id: 6100f304-ad99-4bb9-a345-723d0b508a56
+        name: olist_orders_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 0586e6ba-52f5-4d18-b0a2-d4d9fccca6f4
+          name: order_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: 7c7872bf-8407-4517-b00e-6a7573a7dd9c
+          name: customer_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: c0d08fb9-1164-45ab-8227-906cce32127b
+          name: order_status
+          description: ''
+          type: text
+          sample_values:
+          - delivered
+          - shipped
+          - unavailable
+          - invoiced
+          - processing
+          is_nullable: true
+          is_unique: false
+        - id: 327888a6-cdbb-4b72-a1a7-fed0ef834fd6
+          name: order_purchase_timestamp
+          description: ''
+          type: text
+          sample_values:
+          - '2017-10-02 10:56:33'
+          - '2018-07-24 20:41:37'
+          - '2018-08-08 08:38:49'
+          - '2017-11-18 19:28:06'
+          - '2018-02-13 21:18:39'
+          is_nullable: true
+          is_unique: true
+        - id: e0bab901-b744-47bd-b13c-5667b2fd6747
+          name: order_approved_at
+          description: ''
+          type: text
+          sample_values:
+          - '2017-10-02 11:07:15'
+          - '2018-07-26 03:24:27'
+          - '2018-08-08 08:55:23'
+          - '2017-11-18 19:45:59'
+          - '2018-02-13 22:20:29'
+          is_nullable: true
+          is_unique: true
+        - id: a854545f-1917-4093-8346-d83d821760f3
+          name: order_delivered_carrier_date
+          description: ''
+          type: text
+          sample_values:
+          - '2018-06-11 14:54:00'
+          - '2018-06-15 14:22:00'
+          - '2017-06-16 15:37:52'
+          - '2018-08-27 17:58:00'
+          - '2017-10-04 19:55:00'
+          is_nullable: true
+          is_unique: false
+        - id: 4eb4787e-b01f-4a24-b0cc-497b90e82155
+          name: order_delivered_customer_date
+          description: ''
+          type: text
+          sample_values:
+          - '2017-10-10 21:25:13'
+          - '2018-08-07 15:27:45'
+          - '2018-08-17 18:06:29'
+          - '2017-12-02 00:28:42'
+          - '2018-02-16 18:17:02'
+          is_nullable: true
+          is_unique: true
+        - id: 7fab96ba-a874-43b6-b095-50173dfd8fca
+          name: order_estimated_delivery_date
+          description: ''
+          type: text
+          sample_values:
+          - '2018-02-21 00:00:00'
+          - '2018-03-07 00:00:00'
+          - '2017-12-15 00:00:00'
+          - '2018-06-28 00:00:00'
+          - '2018-07-05 00:00:00'
+          is_nullable: true
+          is_unique: false
+      - id: 5e123df5-f69d-4d30-97e7-da063f4dfad6
+        name: olist_products_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 7cd9c077-b41b-43b4-a44f-34d00993fb71
+          name: product_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: 7912d222-ee7a-4869-a3c5-c306243fd25c
+          name: product_category_name
+          description: ''
+          type: text
+          sample_values:
+          - cama_mesa_banho
+          - esporte_lazer
+          - beleza_saude
+          - moveis_decoracao
+          - utilidades_domesticas
+          is_nullable: true
+          is_unique: false
+        - id: 3e8d7d4c-e193-4d59-941f-bb58cd541e48
+          name: product_name_lenght
+          description: ''
+          type: double precision
+          sample_values:
+          - 60.0
+          - 58.0
+          - 59.0
+          - 52.0
+          - 55.0
+          is_nullable: true
+          is_unique: false
+        - id: cec67005-ca4e-436c-b742-4d7c3a5eb96f
+          name: product_description_lenght
+          description: ''
+          type: double precision
+          sample_values:
+          - 261.0
+          - 287.0
+          - 198.0
+          - 381.0
+          - 703.0
+          is_nullable: true
+          is_unique: false
+        - id: a91cb037-f2e3-4c80-ae7c-804053b7f3ad
+          name: product_photos_qty
+          description: ''
+          type: double precision
+          sample_values:
+          - 1.0
+          - 2.0
+          - 3.0
+          - 4.0
+          - 6.0
+          is_nullable: true
+          is_unique: false
+        - id: 64964a03-c1c9-40d9-9289-70e78d2722e8
+          name: product_weight_g
+          description: ''
+          type: double precision
+          sample_values:
+          - 200.0
+          - 300.0
+          - 150.0
+          - 400.0
+          - 250.0
+          is_nullable: true
+          is_unique: false
+        - id: a2874cd5-20ec-42a5-a777-7b568fae5d61
+          name: product_length_cm
+          description: ''
+          type: double precision
+          sample_values:
+          - 16.0
+          - 20.0
+          - 30.0
+          - 17.0
+          - 18.0
+          is_nullable: true
+          is_unique: false
+        - id: 8a5da053-80cd-4b65-adcf-b134c9eea99c
+          name: product_height_cm
+          description: ''
+          type: double precision
+          sample_values:
+          - 10.0
+          - 20.0
+          - 11.0
+          - 2.0
+          - 12.0
+          is_nullable: true
+          is_unique: false
+        - id: ee109621-4465-4957-86c0-bdb05834a8e8
+          name: product_width_cm
+          description: ''
+          type: double precision
+          sample_values:
+          - 11.0
+          - 20.0
+          - 16.0
+          - 15.0
+          - 30.0
+          is_nullable: true
+          is_unique: false
+      - id: e9b72c1d-fd6f-43da-9e13-5d4c8c80074f
+        name: olist_sellers_dataset
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 926b89c8-01d3-4a83-8017-6db65734ebfe
+          name: seller_id
+          description: ''
+          type: text
+          sample_values: []
+          is_nullable: true
+          is_unique: true
+        - id: 94fac1f8-9068-49c8-ade3-56647a054a75
+          name: seller_zip_code_prefix
+          description: ''
+          type: bigint
+          sample_values:
+          - 14940
+          - 13660
+          - 16200
+          - 1026
+          - 13481
+          is_nullable: true
+          is_unique: false
+        - id: ea5ce37d-6152-4b75-828f-eb12d51f5f40
+          name: seller_city
+          description: ''
+          type: text
+          sample_values:
+          - sao paulo
+          - curitiba
+          - rio de janeiro
+          - belo horizonte
+          - guarulhos
+          is_nullable: true
+          is_unique: false
+        - id: 9325ddfd-fb98-4192-ae69-f6f840f28b5c
+          name: seller_state
+          description: ''
+          type: text
+          sample_values:
+          - SP
+          - PR
+          - MG
+          - SC
+          - RJ
+          is_nullable: true
+          is_unique: false
+      - id: cfb692ab-880a-42ea-b74f-62e66becca91
+        name: product_category_name_translation
+        description: ''
+        pk: []
+        type: base table
+        columns:
+        - id: 42cc873e-60c4-481d-910d-7ef4681701da
+          name: product_category_name
+          description: ''
+          type: text
+          sample_values:
+          - beleza_saude
+          - informatica_acessorios
+          - automotivo
+          - cama_mesa_banho
+          - moveis_decoracao
+          is_nullable: true
+          is_unique: true
+        - id: 331efbb5-130e-45b5-aba2-f8ea0b799c62
+          name: product_category_name_english
+          description: ''
+          type: text
+          sample_values:
+          - health_beauty
+          - computers_accessories
+          - auto
+          - bed_bath_table
+          - furniture_decor
+          is_nullable: true
+          is_unique: true
+  foreign_keys: []
+  joins: []
+semantic_layer:
+  terms:
+  - id: 6132e6b5-32db-4215-88f7-ab4d8a569680
+    name: Olist Customers Dataset
+    description: Business entity represented by table olist_customers_dataset
+    represents:
+    - 8b3627b5-5089-49fa-862e-83757e412c8e
+    columns_attributes:
+    - id: 13921de2-bdd4-46f5-b61e-0516bbe3379d
+      name: customerUniqueId
+      description: ''
+      column_id: fd4da068-1eba-40cc-aec9-f00e05d4ca4d
+    - id: b4040613-cd4b-4b80-bd4c-dfca674140f5
+      name: customerId
+      description: ''
+      column_id: baec3ad5-a8cf-4e11-9b20-a15d8228cde9
+    - id: b6bf7745-2ad9-4d5e-89ca-27d8140ee8f0
+      name: customerCity
+      description: ''
+      column_id: a319efd6-fb1e-434e-94ae-d6a429441748
+    - id: e0abe2b3-8c32-4b19-84c1-30b7b195bd10
+      name: customerState
+      description: ''
+      column_id: 8a1e9afc-96c4-4c4a-9347-2c7b56c4bf5a
+    - id: f98da720-909c-47a6-afaa-61b4c40f0128
+      name: customerZipCodePrefix
+      description: ''
+      column_id: 0ce5bfa6-c024-4d41-9bec-972d617c504f
+  - id: ecb11c3d-382d-43b9-81e5-6f9179004cb2
+    name: Olist Geolocation Dataset
+    description: Business entity represented by table olist_geolocation_dataset
+    represents:
+    - 99ffeac2-5ab3-4524-8288-90661d62364d
+    columns_attributes:
+    - id: 53f2daee-ab93-44f9-a9d6-a8dc40deb967
+      name: geolocationState
+      description: ''
+      column_id: ae9fc1b5-f4ea-4635-bb93-a1fd229c57bf
+    - id: 7ab3613d-dfb2-45cf-bbc6-d6464db94d28
+      name: geolocationLng
+      description: ''
+      column_id: 8958d1cd-00b5-460a-a419-f18daa5714cf
+    - id: 8461e0c9-37ec-4725-b324-8cd2ab289741
+      name: geolocationCity
+      description: ''
+      column_id: b69b8213-5832-4ad3-b167-b542743a839b
+    - id: f6a97bf3-02d2-4570-85ff-1d21b54490cd
+      name: geolocationZipCodePrefix
+      description: ''
+      column_id: 1359aa7d-7ac1-4f13-8d14-8b83a88d707c
+    - id: f8ca36cc-1eba-499d-8b2d-29993517b493
+      name: geolocationLat
+      description: ''
+      column_id: eb5e85e5-7e23-464a-ba1f-34b0bc1cf0f1
+  - id: 4186095e-09fe-471b-9e4d-6928b26a898e
+    name: Olist Order Items Dataset
+    description: Business entity represented by table olist_order_items_dataset
+    represents:
+    - 6e68a5e0-9000-4337-a98e-35bdfa316adc
+    columns_attributes:
+    - id: 2bcbdf1f-ea18-4601-be70-c0e5567cde37
+      name: shippingLimitDate
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: 48ed77c1-ee0c-4e41-ab8e-1889b0ded7ba
+    - id: 39f4927e-14c6-452c-873d-5f9371bba1e8
+      name: orderId
+      description: ''
+      column_id: 0de078f4-c8a4-4853-98c5-94a87a2cbe41
+    - id: 3f99ac9e-0023-470d-8090-c55ac89ca4bd
+      name: freightValue
+      description: ''
+      column_id: 4d677318-940d-4049-aa2d-b725dd4555e0
+    - id: 6acd5b7b-69de-444c-956a-bf2a1a9da571
+      name: price
+      description: ''
+      column_id: fbbcdd20-bf51-4b44-884d-284f8065ae0b
+    - id: c6424433-e533-4ecc-96dc-53707dd2de02
+      name: productId
+      description: ''
+      column_id: 8635694b-31cf-4253-b2ce-002eaeceabd4
+    - id: dcd8f3cd-ba11-4845-9c08-ac0c7c40d9f0
+      name: sellerId
+      description: ''
+      column_id: 59dea2ed-843e-4ef9-ab55-3af6f4cc5559
+    - id: df87d4f0-177a-48b0-964e-938d6583eb5b
+      name: orderItemId
+      description: ''
+      column_id: 4ac6cae8-f756-4155-9da2-49210094c093
+  - id: 725ac853-7a1e-4086-a5a6-dfee72092ff5
+    name: Olist Order Payments Dataset
+    description: Business entity represented by table olist_order_payments_dataset
+    represents:
+    - ec2a9824-118e-4ecb-b147-78d31432e4e0
+    columns_attributes:
+    - id: 413ff841-9d02-49b1-93d4-a3ed32ea4aee
+      name: orderId
+      description: ''
+      column_id: 01444b48-5dd9-44e2-945f-8774ea9528ed
+    - id: 6a2f5b54-c99e-4e6c-9ddc-b7bb26061078
+      name: paymentValue
+      description: ''
+      column_id: 2f0b5264-63c5-40ce-93b2-7ddad574db8e
+    - id: b890ec4f-e83b-4758-bf1d-521bb58925b7
+      name: paymentSequential
+      description: ''
+      column_id: 2967a91d-550d-4e5f-8e95-12eed0fccc36
+    - id: e6f2bdf7-7fe9-4973-b528-2e3a9e32f8c7
+      name: paymentType
+      description: ''
+      column_id: f887cbf6-2b1e-40ac-93a4-9442d575ba3a
+    - id: e8e9082d-e0b2-47af-be15-feeda51c195c
+      name: paymentInstallments
+      description: ''
+      column_id: 4716f0ff-0a95-4ddb-8ce6-b88c63ce5c44
+  - id: 45375517-f74e-481e-b7f0-1e7d18c32798
+    name: Olist Order Reviews Dataset
+    description: Business entity represented by table olist_order_reviews_dataset
+    represents:
+    - baa5e17f-aee6-4203-8174-bde60cb2dee3
+    columns_attributes:
+    - id: 1c6c93fc-e1e9-47ee-8db5-b7ecbb775eac
+      name: reviewCommentMessage
+      description: ''
+      column_id: 4b58629f-bb0c-42b4-9010-99699af3cb5e
+    - id: 3180af4c-b777-40ab-a515-e2f0a9cafe49
+      name: reviewScore
+      description: ''
+      column_id: 200e46a5-9f50-4b88-91a7-1e335aad6155
+    - id: 63d4765f-2320-4d04-842d-7abb2703e1ae
+      name: reviewCommentTitle
+      description: ''
+      column_id: adc53db4-922a-4810-a33a-702b00a17441
+    - id: 64b24727-9077-41d6-abce-1699f11bccdd
+      name: orderId
+      description: ''
+      column_id: f076df55-1d4e-486e-a719-b2781157bcd8
+    - id: c75be2fe-207e-42a1-84de-e193240f194b
+      name: reviewId
+      description: ''
+      column_id: 5c4269ec-a211-4fb2-9a2c-a3105d3aff94
+    - id: e909f82b-59ef-4c34-bf3d-4870eb3bc111
+      name: reviewAnswerTimestamp
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: 2eef2c0b-4b89-4a89-ba45-51da636dff81
+    - id: eadfd523-79e5-43dc-9ec0-a134cad1084c
+      name: reviewCreationDate
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: 43217b6c-4049-40de-b7dc-206f86b8aa97
+  - id: f65d79bb-b65b-46ee-a6d7-7a7dd5788f5e
+    name: Olist Orders Dataset
+    description: Business entity represented by table olist_orders_dataset
+    represents:
+    - 6100f304-ad99-4bb9-a345-723d0b508a56
+    columns_attributes:
+    - id: 18dc40af-b4c4-42fd-ac50-ff04419af99f
+      name: orderApprovedAt
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: e0bab901-b744-47bd-b13c-5667b2fd6747
+    - id: 32da0b25-18b9-4db4-a39c-a0dc3c55e9f3
+      name: customerId
+      description: ''
+      column_id: 7c7872bf-8407-4517-b00e-6a7573a7dd9c
+    - id: 5baab85e-1f4b-4fd7-9df2-c2f2dc45c510
+      name: orderDeliveredCustomerDate
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: 4eb4787e-b01f-4a24-b0cc-497b90e82155
+    - id: 75ab6a17-ba16-4f32-afb2-cd514153b253
+      name: orderStatus
+      description: ''
+      column_id: c0d08fb9-1164-45ab-8227-906cce32127b
+    - id: 779a2fae-d019-4996-aba3-692ae47d7ea0
+      name: orderEstimatedDeliveryDate
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: 7fab96ba-a874-43b6-b095-50173dfd8fca
+    - id: 90757e8c-7d8e-4bf1-a807-bd1e3a36af88
+      name: orderDeliveredCarrierDate
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: a854545f-1917-4093-8346-d83d821760f3
+    - id: a9ab431d-38c7-43a5-b04c-f0bebd4c5098
+      name: orderId
+      description: ''
+      column_id: 0586e6ba-52f5-4d18-b0a2-d4d9fccca6f4
+    - id: ef9a9a12-8d4f-4b77-9782-dcd50f2b9c44
+      name: orderPurchaseTimestamp
+      description: 'format: YYYY-MM-DD HH:MM:SS'
+      column_id: 327888a6-cdbb-4b72-a1a7-fed0ef834fd6
+  - id: 1815e6ee-0f9b-4e2a-8361-4c582189d89d
+    name: Olist Products Dataset
+    description: Business entity represented by table olist_products_dataset
+    represents:
+    - 5e123df5-f69d-4d30-97e7-da063f4dfad6
+    columns_attributes:
+    - id: 4d41565b-52a2-415a-a727-be29a72fdc4e
+      name: productWidthCm
+      description: ''
+      column_id: ee109621-4465-4957-86c0-bdb05834a8e8
+    - id: 6b5da13c-6265-443d-99e4-57684095e853
+      name: productDescriptionLenght
+      description: ''
+      column_id: cec67005-ca4e-436c-b742-4d7c3a5eb96f
+    - id: 6cfebd96-8ee5-4317-a85b-416ca6457cef
+      name: productId
+      description: ''
+      column_id: 7cd9c077-b41b-43b4-a44f-34d00993fb71
+    - id: 8490833b-8a68-4f97-9289-400a6ef5beb6
+      name: productPhotosQty
+      description: ''
+      column_id: a91cb037-f2e3-4c80-ae7c-804053b7f3ad
+    - id: 858501d7-cf81-4ca2-8e39-a7825f6b5445
+      name: productNameLenght
+      description: ''
+      column_id: 3e8d7d4c-e193-4d59-941f-bb58cd541e48
+    - id: 8ce5a4ab-429d-4653-9031-35d5f7143c62
+      name: productCategoryName
+      description: ''
+      column_id: 7912d222-ee7a-4869-a3c5-c306243fd25c
+    - id: 9bc2ffd3-4594-45e4-8406-f8bdafa1c147
+      name: productWeightG
+      description: ''
+      column_id: 64964a03-c1c9-40d9-9289-70e78d2722e8
+    - id: f2bbff86-1f2e-4fd0-90f1-847ac5fb6e13
+      name: productHeightCm
+      description: ''
+      column_id: 8a5da053-80cd-4b65-adcf-b134c9eea99c
+    - id: fee72805-3cce-4558-94be-17927e72b353
+      name: productLengthCm
+      description: ''
+      column_id: a2874cd5-20ec-42a5-a777-7b568fae5d61
+  - id: 0cee9f7a-75b2-4a40-8e11-8425a1edba46
+    name: Olist Sellers Dataset
+    description: Business entity represented by table olist_sellers_dataset
+    represents:
+    - e9b72c1d-fd6f-43da-9e13-5d4c8c80074f
+    columns_attributes:
+    - id: 17df4e8f-d902-4480-ae36-52848171ed41
+      name: sellerCity
+      description: ''
+      column_id: ea5ce37d-6152-4b75-828f-eb12d51f5f40
+    - id: 89dac0c9-3c62-4b26-b5b9-74f145ae4653
+      name: sellerZipCodePrefix
+      description: ''
+      column_id: 94fac1f8-9068-49c8-ade3-56647a054a75
+    - id: f11fcb02-a3de-4eef-ad13-bbef5bc5d0b8
+      name: sellerId
+      description: ''
+      column_id: 926b89c8-01d3-4a83-8017-6db65734ebfe
+    - id: f58f30f4-ba1d-41c6-8681-d8cd77c56f4d
+      name: sellerState
+      description: ''
+      column_id: 9325ddfd-fb98-4192-ae69-f6f840f28b5c
+  - id: 24ffcbc4-983f-4008-aba2-f7ac1db303d3
+    name: Product Category Name Translation
+    description: Business entity represented by table product_category_name_translation
+    represents:
+    - cfb692ab-880a-42ea-b74f-62e66becca91
+    columns_attributes:
+    - id: 33101f02-af67-404c-8762-df9ec795176f
+      name: productCategoryNameEnglish
+      description: ''
+      column_id: 331efbb5-130e-45b5-aba2-f8ea0b799c62
+    - id: a469ccd6-adff-459e-8cf3-2ae0aae370e5
+      name: productCategoryName
+      description: ''
+      column_id: 42cc873e-60c4-481d-910d-7ef4681701da
+  semantic_fks: []
+  sql_attributes:
+    manual: []
+    table: []
+    sql: []
+    bridge_table: []
+  custom_analyses: []
+zones: []

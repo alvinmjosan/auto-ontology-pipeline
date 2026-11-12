@@ -1,0 +1,191 @@
+[
+  {
+    "child_table": "olist_order_items_dataset",
+    "child_column": "product_id",
+    "parent_table": "olist_products_dataset",
+    "parent_column": "product_id",
+    "kind": "foreign_key",
+    "cardinality": "many-to-one",
+    "confidence": 1.0,
+    "evidence": {
+      "containment": 1.0,
+      "parent_coverage": 1.0,
+      "name_score": 1.0,
+      "child_distinct": 32951,
+      "parent_distinct": 32951,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_order_items_dataset",
+    "child_column": "seller_id",
+    "parent_table": "olist_sellers_dataset",
+    "parent_column": "seller_id",
+    "kind": "foreign_key",
+    "cardinality": "many-to-one",
+    "confidence": 1.0,
+    "evidence": {
+      "containment": 1.0,
+      "parent_coverage": 1.0,
+      "name_score": 1.0,
+      "child_distinct": 3095,
+      "parent_distinct": 3095,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_order_payments_dataset",
+    "child_column": "order_id",
+    "parent_table": "olist_orders_dataset",
+    "parent_column": "order_id",
+    "kind": "foreign_key",
+    "cardinality": "many-to-one",
+    "confidence": 1.0,
+    "evidence": {
+      "containment": 1.0,
+      "parent_coverage": 1.0,
+      "name_score": 1.0,
+      "child_distinct": 99440,
+      "parent_distinct": 99441,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_orders_dataset",
+    "child_column": "customer_id",
+    "parent_table": "olist_customers_dataset",
+    "parent_column": "customer_id",
+    "kind": "foreign_key",
+    "cardinality": "one-to-one",
+    "confidence": 1.0,
+    "evidence": {
+      "containment": 1.0,
+      "parent_coverage": 1.0,
+      "name_score": 1.0,
+      "child_distinct": 99441,
+      "parent_distinct": 99441,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_order_items_dataset",
+    "child_column": "order_id",
+    "parent_table": "olist_orders_dataset",
+    "parent_column": "order_id",
+    "kind": "foreign_key",
+    "cardinality": "many-to-one",
+    "confidence": 0.999,
+    "evidence": {
+      "containment": 1.0,
+      "parent_coverage": 0.9922,
+      "name_score": 1.0,
+      "child_distinct": 98666,
+      "parent_distinct": 99441,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_order_reviews_dataset",
+    "child_column": "order_id",
+    "parent_table": "olist_orders_dataset",
+    "parent_column": "order_id",
+    "kind": "foreign_key",
+    "cardinality": "many-to-one",
+    "confidence": 0.999,
+    "evidence": {
+      "containment": 1.0,
+      "parent_coverage": 0.9923,
+      "name_score": 1.0,
+      "child_distinct": 98673,
+      "parent_distinct": 99441,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_products_dataset",
+    "child_column": "product_category_name",
+    "parent_table": "product_category_name_translation",
+    "parent_column": "product_category_name",
+    "kind": "foreign_key",
+    "cardinality": "many-to-one",
+    "confidence": 0.988,
+    "evidence": {
+      "containment": 0.9726,
+      "parent_coverage": 1.0,
+      "name_score": 1.0,
+      "child_distinct": 73,
+      "parent_distinct": 71,
+      "parent_is_primary_key": true
+    },
+    "tier": "high"
+  },
+  {
+    "child_table": "olist_customers_dataset",
+    "child_column": "customer_zip_code_prefix",
+    "parent_table": "olist_geolocation_dataset",
+    "parent_column": "geolocation_zip_code_prefix",
+    "kind": "lookup",
+    "cardinality": "many-to-many",
+    "confidence": 0.75,
+    "evidence": {
+      "containment": 0.9895,
+      "name_score": 0.8,
+      "child_distinct": 14994,
+      "parent_distinct": 19015,
+      "note": "neither side is unique; shared value domain, not a strict foreign key",
+      "llm_check": {
+        "references": true,
+        "reason": "Both columns store postal-code prefixes, and the parent dataset contains nearly all values found in the child, enabling valid lookup references."
+      }
+    },
+    "tier": "review"
+  },
+  {
+    "child_table": "olist_customers_dataset",
+    "child_column": "customer_city",
+    "parent_table": "olist_geolocation_dataset",
+    "parent_column": "geolocation_city",
+    "kind": "lookup",
+    "cardinality": "many-to-many",
+    "confidence": 0.75,
+    "evidence": {
+      "containment": 0.9879,
+      "name_score": 0.8,
+      "child_distinct": 4119,
+      "parent_distinct": 8011,
+      "note": "neither side is unique; shared value domain, not a strict foreign key",
+      "llm_check": {
+        "references": true,
+        "reason": "Both columns store city names representing the same geographical locations, with high value overlap allowing the parent table to serve as a lookup for the child."
+      }
+    },
+    "tier": "review"
+  },
+  {
+    "child_table": "olist_sellers_dataset",
+    "child_column": "seller_zip_code_prefix",
+    "parent_table": "olist_geolocation_dataset",
+    "parent_column": "geolocation_zip_code_prefix",
+    "kind": "lookup",
+    "cardinality": "many-to-many",
+    "confidence": 0.75,
+    "evidence": {
+      "containment": 0.9969,
+      "name_score": 0.8,
+      "child_distinct": 2246,
+      "parent_distinct": 19015,
+      "note": "neither side is unique; shared value domain, not a strict foreign key",
+      "llm_check": {
+        "references": true,
+        "reason": "Both columns store zip code prefixes, and 99.69% of child values appear in the parent, confirming it can serve as a lookup table."
+      }
+    },
+    "tier": "review"
+  }
+]
