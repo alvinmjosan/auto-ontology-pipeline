@@ -1,0 +1,523 @@
+metadata:
+  source_export: ontology_olist.yaml
+  llm_model: nvidia/nemotron-3.5-lightning-30b-a3b
+  auto_ontology_entities: 9
+  auto_ontology_relationships_found: 0
+  relationships_inferred_by_this_tool: 10
+  warnings: []
+  data_notes:
+  - 'olist_customers_dataset.customer_id is a per-row surrogate key: 96096 distinct values in olist_customers_dataset.customer_unique_id
+    vs 99441 rows, suggesting customer_unique_id identifies real-world entities that place multiple records.'
+entities:
+- name: Customer
+  source_table: olist_customers_dataset
+  description: This entity stores customer records for the e-commerce platform. It captures identification,
+    location, and demographic attributes.
+  primary_key:
+  - customer_id
+  row_count: 99441
+  attributes:
+  - name: customerUniqueId
+    column: customer_unique_id
+    type: TEXT
+    meaning: Anonymous customer identifier for tracking
+    is_primary_key: false
+  - name: customerId
+    column: customer_id
+    type: TEXT
+    meaning: Primary key uniquely identifying a customer
+    is_primary_key: true
+  - name: customerCity
+    column: customer_city
+    type: TEXT
+    meaning: City of customer residence
+    is_primary_key: false
+  - name: customerState
+    column: customer_state
+    type: TEXT
+    meaning: State of customer residence
+    is_primary_key: false
+  - name: customerZipCodePrefix
+    column: customer_zip_code_prefix
+    type: BIGINT
+    meaning: Initial digits of customer postal code
+    is_primary_key: false
+- name: Location
+  source_table: olist_geolocation_dataset
+  description: Stores geolocation records linking coordinates, cities, states, and zip code prefixes to
+    customers and sellers.
+  primary_key: []
+  row_count: 1000163
+  attributes:
+  - name: geolocationState
+    column: geolocation_state
+    type: TEXT
+    meaning: State abbreviation of the geolocation
+    is_primary_key: false
+  - name: geolocationLng
+    column: geolocation_lng
+    type: DOUBLE PRECISION
+    meaning: Longitude coordinate of the geolocation
+    is_primary_key: false
+  - name: geolocationCity
+    column: geolocation_city
+    type: TEXT
+    meaning: City name within the geolocation region
+    is_primary_key: false
+  - name: geolocationZipCodePrefix
+    column: geolocation_zip_code_prefix
+    type: BIGINT
+    meaning: Brazilian zip code prefix identifying geographic region
+    is_primary_key: false
+  - name: geolocationLat
+    column: geolocation_lat
+    type: DOUBLE PRECISION
+    meaning: Latitude coordinate of the geolocation
+    is_primary_key: false
+- name: Order Item
+  source_table: olist_order_items_dataset
+  description: Order items represent individual products sold within customer orders, including pricing
+    and shipping details.
+  primary_key:
+  - order_id
+  - order_item_id
+  row_count: 112650
+  attributes:
+  - name: shippingLimitDate
+    column: shipping_limit_date
+    type: TEXT
+    meaning: Deadline date for order shipment
+    is_primary_key: false
+  - name: orderId
+    column: order_id
+    type: TEXT
+    meaning: Identifier for a customer order
+    is_primary_key: true
+  - name: freightValue
+    column: freight_value
+    type: DOUBLE PRECISION
+    meaning: Shipping cost for the order item
+    is_primary_key: false
+  - name: price
+    column: price
+    type: DOUBLE PRECISION
+    meaning: Selling price of the order item
+    is_primary_key: false
+  - name: productId
+    column: product_id
+    type: TEXT
+    meaning: Identifier for a purchasable product
+    is_primary_key: false
+  - name: sellerId
+    column: seller_id
+    type: TEXT
+    meaning: Identifier for the product seller
+    is_primary_key: false
+  - name: orderItemId
+    column: order_item_id
+    type: BIGINT
+    meaning: Line item sequence within an order
+    is_primary_key: true
+- name: Payment
+  source_table: olist_order_payments_dataset
+  description: A payment record linked to an order, capturing payment details.
+  primary_key:
+  - order_id
+  - payment_sequential
+  row_count: 103886
+  attributes:
+  - name: orderId
+    column: order_id
+    type: TEXT
+    meaning: Unique identifier for an order.
+    is_primary_key: true
+  - name: paymentValue
+    column: payment_value
+    type: DOUBLE PRECISION
+    meaning: Monetary value of the payment in currency.
+    is_primary_key: false
+  - name: paymentSequential
+    column: payment_sequential
+    type: BIGINT
+    meaning: Sequential payment number within an order.
+    is_primary_key: true
+  - name: paymentType
+    column: payment_type
+    type: TEXT
+    meaning: Payment method type (e.g. credit card).
+    is_primary_key: false
+  - name: paymentInstallments
+    column: payment_installments
+    type: BIGINT
+    meaning: Number of installments for the payment.
+    is_primary_key: false
+- name: OrderReview
+  source_table: olist_order_reviews_dataset
+  description: This table records customer reviews for purchased orders, capturing review scores, comments,
+    and timing data.
+  primary_key:
+  - order_id
+  - review_id
+  row_count: 99224
+  attributes:
+  - name: reviewCommentMessage
+    column: review_comment_message
+    type: TEXT
+    meaning: Optional customer review text in free form.
+    is_primary_key: false
+  - name: reviewScore
+    column: review_score
+    type: BIGINT
+    meaning: Customer numeric rating, range 1 to 5.
+    is_primary_key: false
+  - name: reviewCommentTitle
+    column: review_comment_title
+    type: TEXT
+    meaning: Optional title for the customer review.
+    is_primary_key: false
+  - name: orderId
+    column: order_id
+    type: TEXT
+    meaning: Identifier linking review to its associated order.
+    is_primary_key: true
+  - name: reviewId
+    column: review_id
+    type: TEXT
+    meaning: Unique identifier for each customer review.
+    is_primary_key: true
+  - name: reviewAnswerTimestamp
+    column: review_answer_timestamp
+    type: TEXT
+    meaning: Timestamp when the review received a response.
+    is_primary_key: false
+  - name: reviewCreationDate
+    column: review_creation_date
+    type: TEXT
+    meaning: Timestamp indicating when the review was created.
+    is_primary_key: false
+- name: Order
+  source_table: olist_orders_dataset
+  description: An order represents a customer purchase, tracking status, timestamps, and delivery details.
+  primary_key:
+  - order_id
+  row_count: 99441
+  attributes:
+  - name: orderApprovedAt
+    column: order_approved_at
+    type: TEXT
+    meaning: Timestamp when the order was approved
+    is_primary_key: false
+  - name: customerId
+    column: customer_id
+    type: TEXT
+    meaning: Identifier of the customer who placed the order
+    is_primary_key: false
+  - name: orderDeliveredCustomerDate
+    column: order_delivered_customer_date
+    type: TEXT
+    meaning: Date the order was delivered to the customer
+    is_primary_key: false
+  - name: orderStatus
+    column: order_status
+    type: TEXT
+    meaning: Current fulfillment status of the order
+    is_primary_key: false
+  - name: orderEstimatedDeliveryDate
+    column: order_estimated_delivery_date
+    type: TEXT
+    meaning: Estimated date of order delivery
+    is_primary_key: false
+  - name: orderDeliveredCarrierDate
+    column: order_delivered_carrier_date
+    type: TEXT
+    meaning: Date the order was handed to the carrier
+    is_primary_key: false
+  - name: orderId
+    column: order_id
+    type: TEXT
+    meaning: Unique system-generated order identifier
+    is_primary_key: true
+  - name: orderPurchaseTimestamp
+    column: order_purchase_timestamp
+    type: TEXT
+    meaning: Timestamp when the order was purchased
+    is_primary_key: false
+- name: Product
+  source_table: olist_products_dataset
+  description: This table stores detailed information about products sold in an e-commerce marketplace,
+    including their physical attributes and category.
+  primary_key:
+  - product_id
+  row_count: 32951
+  attributes:
+  - name: productWidthCm
+    column: product_width_cm
+    type: DOUBLE PRECISION
+    meaning: Width of product in centimeters
+    is_primary_key: false
+  - name: productDescriptionLenght
+    column: product_description_lenght
+    type: DOUBLE PRECISION
+    meaning: Length of product description in characters
+    is_primary_key: false
+  - name: productId
+    column: product_id
+    type: TEXT
+    meaning: Unique product identifier
+    is_primary_key: true
+  - name: productPhotosQty
+    column: product_photos_qty
+    type: DOUBLE PRECISION
+    meaning: Number of product photos attached
+    is_primary_key: false
+  - name: productNameLenght
+    column: product_name_lenght
+    type: DOUBLE PRECISION
+    meaning: Length of product name in characters
+    is_primary_key: false
+  - name: productCategoryName
+    column: product_category_name
+    type: TEXT
+    meaning: Category label for product
+    is_primary_key: false
+  - name: productWeightG
+    column: product_weight_g
+    type: DOUBLE PRECISION
+    meaning: Weight of product in grams
+    is_primary_key: false
+  - name: productHeightCm
+    column: product_height_cm
+    type: DOUBLE PRECISION
+    meaning: Height of product in centimeters
+    is_primary_key: false
+  - name: productLengthCm
+    column: product_length_cm
+    type: DOUBLE PRECISION
+    meaning: Length of product in centimeters
+    is_primary_key: false
+- name: Seller
+  source_table: olist_sellers_dataset
+  description: This entity represents marketplace sellers, capturing their location and identification
+    details.
+  primary_key:
+  - seller_id
+  row_count: 3095
+  attributes:
+  - name: sellerCity
+    column: seller_city
+    type: TEXT
+    meaning: City where the seller is located
+    is_primary_key: false
+  - name: sellerZipCodePrefix
+    column: seller_zip_code_prefix
+    type: BIGINT
+    meaning: Postal code prefix for seller location
+    is_primary_key: false
+  - name: sellerId
+    column: seller_id
+    type: TEXT
+    meaning: Unique seller identifier
+    is_primary_key: true
+  - name: sellerState
+    column: seller_state
+    type: TEXT
+    meaning: State abbreviation of seller location
+    is_primary_key: false
+- name: ProductCategory
+  source_table: product_category_name_translation
+  description: This entity stores mapped product category names in Portuguese and English for cross-language
+    product classification.
+  primary_key:
+  - product_category_name
+  row_count: 71
+  attributes:
+  - name: productCategoryNameEnglish
+    column: product_category_name_english
+    type: TEXT
+    meaning: English product category equivalent
+    is_primary_key: false
+  - name: productCategoryName
+    column: product_category_name
+    type: TEXT
+    meaning: Portuguese product category identifier
+    is_primary_key: true
+relationships:
+- from_entity: Order Item
+  to_entity: Product
+  from_column: product_id
+  to_column: product_id
+  kind: foreign_key
+  cardinality: many-to-one
+  description: Many Order Items belong to one Product.
+  description_source: llm
+  confidence: 1.0
+  tier: high
+  evidence:
+    containment: 1.0
+    parent_coverage: 1.0
+    name_score: 1.0
+    child_distinct: 32951
+    parent_distinct: 32951
+    parent_is_primary_key: true
+- from_entity: Order Item
+  to_entity: Seller
+  from_column: seller_id
+  to_column: seller_id
+  kind: foreign_key
+  cardinality: many-to-one
+  description: Many Order Items belong to one Seller.
+  description_source: llm
+  confidence: 1.0
+  tier: high
+  evidence:
+    containment: 1.0
+    parent_coverage: 1.0
+    name_score: 1.0
+    child_distinct: 3095
+    parent_distinct: 3095
+    parent_is_primary_key: true
+- from_entity: Payment
+  to_entity: Order
+  from_column: order_id
+  to_column: order_id
+  kind: foreign_key
+  cardinality: many-to-one
+  description: An Order has many Payments.
+  description_source: llm
+  confidence: 1.0
+  tier: high
+  evidence:
+    containment: 1.0
+    parent_coverage: 1.0
+    name_score: 1.0
+    child_distinct: 99440
+    parent_distinct: 99441
+    parent_is_primary_key: true
+- from_entity: Order
+  to_entity: Customer
+  from_column: customer_id
+  to_column: customer_id
+  kind: foreign_key
+  cardinality: one-to-one
+  description: An Order belongs to one Customer.
+  description_source: llm
+  confidence: 1.0
+  tier: high
+  evidence:
+    containment: 1.0
+    parent_coverage: 1.0
+    name_score: 1.0
+    child_distinct: 99441
+    parent_distinct: 99441
+    parent_is_primary_key: true
+- from_entity: Order Item
+  to_entity: Order
+  from_column: order_id
+  to_column: order_id
+  kind: foreign_key
+  cardinality: many-to-one
+  description: An Order has many Order Items.
+  description_source: llm
+  confidence: 0.999
+  tier: high
+  evidence:
+    containment: 1.0
+    parent_coverage: 0.9922
+    name_score: 1.0
+    child_distinct: 98666
+    parent_distinct: 99441
+    parent_is_primary_key: true
+- from_entity: OrderReview
+  to_entity: Order
+  from_column: order_id
+  to_column: order_id
+  kind: foreign_key
+  cardinality: many-to-one
+  description: An Order has many OrderReviews.
+  description_source: llm
+  confidence: 0.999
+  tier: high
+  evidence:
+    containment: 1.0
+    parent_coverage: 0.9923
+    name_score: 1.0
+    child_distinct: 98673
+    parent_distinct: 99441
+    parent_is_primary_key: true
+- from_entity: Product
+  to_entity: ProductCategory
+  from_column: product_category_name
+  to_column: product_category_name
+  kind: foreign_key
+  cardinality: many-to-one
+  description: Many Products belong to one ProductCategory.
+  description_source: llm
+  confidence: 0.988
+  tier: high
+  evidence:
+    containment: 0.9726
+    parent_coverage: 1.0
+    name_score: 1.0
+    child_distinct: 73
+    parent_distinct: 71
+    parent_is_primary_key: true
+- from_entity: Customer
+  to_entity: Location
+  from_column: customer_zip_code_prefix
+  to_column: geolocation_zip_code_prefix
+  kind: lookup
+  cardinality: many-to-many
+  description: A Customer can be matched to a Location through shared customer_zip_code_prefix values.
+  description_source: template
+  confidence: 0.75
+  tier: review
+  evidence:
+    containment: 0.9895
+    name_score: 0.8
+    child_distinct: 14994
+    parent_distinct: 19015
+    note: neither side is unique; shared value domain, not a strict foreign key
+    llm_check:
+      references: true
+      reason: Both columns store postal-code prefixes, and the parent dataset contains nearly all values
+        found in the child, enabling valid lookup references.
+- from_entity: Customer
+  to_entity: Location
+  from_column: customer_city
+  to_column: geolocation_city
+  kind: lookup
+  cardinality: many-to-many
+  description: A Location has many Customers, and a Customer belongs to many Locations.
+  description_source: llm
+  confidence: 0.75
+  tier: review
+  evidence:
+    containment: 0.9879
+    name_score: 0.8
+    child_distinct: 4119
+    parent_distinct: 8011
+    note: neither side is unique; shared value domain, not a strict foreign key
+    llm_check:
+      references: true
+      reason: Both columns store city names representing the same geographical locations, with high value
+        overlap allowing the parent table to serve as a lookup for the child.
+- from_entity: Seller
+  to_entity: Location
+  from_column: seller_zip_code_prefix
+  to_column: geolocation_zip_code_prefix
+  kind: lookup
+  cardinality: many-to-many
+  description: A Location has many Sellers, and a Seller belongs to many Locations.
+  description_source: llm
+  confidence: 0.75
+  tier: review
+  evidence:
+    containment: 0.9969
+    name_score: 0.8
+    child_distinct: 2246
+    parent_distinct: 19015
+    note: neither side is unique; shared value domain, not a strict foreign key
+    llm_check:
+      references: true
+      reason: Both columns store zip code prefixes, and 99.69% of child values appear in the parent, confirming
+        it can serve as a lookup table.
