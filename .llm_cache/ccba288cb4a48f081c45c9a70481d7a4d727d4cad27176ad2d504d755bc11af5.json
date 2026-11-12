@@ -1,0 +1,1 @@
+{"entity_name": "ProductCategory", "description": "This entity stores mapped product category names in Portuguese and English for cross-language product classification.", "attributes": {"product_category_name": "Portuguese product category identifier", "product_category_name_english": "English product category equivalent"}, "unknown_columns_dropped": [], "missing_columns": []}

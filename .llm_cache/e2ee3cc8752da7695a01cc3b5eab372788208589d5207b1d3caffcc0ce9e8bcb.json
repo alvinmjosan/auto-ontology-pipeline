@@ -1,0 +1,1 @@
+{"references": true, "reason": "Both columns store postal-code prefixes, and the parent dataset contains nearly all values found in the child, enabling valid lookup references."}

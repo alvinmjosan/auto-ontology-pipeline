@@ -1,0 +1,1 @@
+{"references": true, "reason": "Both columns store city names representing the same geographical locations, with high value overlap allowing the parent table to serve as a lookup for the child."}

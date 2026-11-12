@@ -1,0 +1,1 @@
+{"references": true, "reason": "Both columns store zip code prefixes, and 99.69% of child values appear in the parent, confirming it can serve as a lookup table."}
