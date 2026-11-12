@@ -214,8 +214,7 @@ This pipeline's LLM and relationship-finder steps fill in what Auto Ontology lef
 A: `customer_id` in `olist_orders_dataset` is unique — every order gets a fresh
 `customer_id`. The statistical reality is 1-to-1, so `cardinality: one-to-one` is correct.
 The `data_notes` field (generated from `customer_unique_id` distinct count vs row count)
-explains the surrogate-key situation. The relationship sentence says "Each Order belongs to
-one Customer" to match the data.
+explains the surrogate-key situation. The relationship sentence says "An Order belongs to one Customer" to match the data.
 
 **Q: What does Auto Ontology actually add if it produces empty descriptions?**
 A: The UUID-based entity mapping in the export decouples the ontology from raw table names.
