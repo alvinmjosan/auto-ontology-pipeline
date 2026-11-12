@@ -1,0 +1,9 @@
+# Normalise line endings to LF on commit, check out as LF on all platforms.
+# This prevents the "10 files modified (line endings only)" noise in git status.
+* text=auto eol=lf
+
+# Explicitly binary — never mangle
+*.png binary
+*.jpg binary
+*.pdf binary
+*.pyc binary
